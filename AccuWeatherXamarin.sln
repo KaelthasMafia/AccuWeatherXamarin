@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuWeatherXamarin.UWP", "AccuWeatherXamarin\AccuWeatherXamarin.UWP\AccuWeatherXamarin.UWP.csproj", "{B277B9ED-16A9-49DC-89A4-D45212AE00E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuWeatherXamarin", "AccuWeatherXamarin\AccuWeatherXamarin\AccuWeatherXamarin.csproj", "{7834426E-13FF-424B-9618-BF9B08CB644E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccuWeatherXamarin", "AccuWeatherXamarin\AccuWeatherXamarin\AccuWeatherXamarin.csproj", "{7834426E-13FF-424B-9618-BF9B08CB644E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{234753A1-A580-4C30-8101-109E58ADA7F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +21,9 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.Build.0 = Debug|x86
-		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.Deploy.0 = Debug|x86
+		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.Build.0 = Debug|x64
+		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|ARM.ActiveCfg = Debug|ARM
 		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|ARM.Build.0 = Debug|ARM
 		{B277B9ED-16A9-49DC-89A4-D45212AE00E2}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -67,6 +69,22 @@ Global
 		{7834426E-13FF-424B-9618-BF9B08CB644E}.Release|x86.ActiveCfg = Release|Any CPU
 		{7834426E-13FF-424B-9618-BF9B08CB644E}.Release|x86.Build.0 = Release|Any CPU
 		{7834426E-13FF-424B-9618-BF9B08CB644E}.Release|x86.Deploy.0 = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|ARM.Build.0 = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Debug|x86.Build.0 = Debug|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|ARM.ActiveCfg = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|ARM.Build.0 = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|x64.Build.0 = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{234753A1-A580-4C30-8101-109E58ADA7F6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

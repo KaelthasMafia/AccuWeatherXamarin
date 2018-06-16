@@ -6,9 +6,20 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>
+        <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked"/>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+                <Label Text="Weather"/>
+                <Label Text="{Binding WeatherText}"/>
+
+                <Label Text="Day Time"/>
+                <Label Text="{Binding IsDayTime}"/>
+
+                <Label Text="Temperature"/>
+                <Label Text="{Binding Temperature}"/>
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
 
 </ContentPage>
