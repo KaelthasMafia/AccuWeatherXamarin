@@ -47,9 +47,21 @@ namespace AccuWeatherXamarin
             //BindingContext = mainPageViewModel;
 	    }
 
-	    public void DeleteCityButtonClicked(object sender, EventArgs e)
+	    public async void DeleteCityButtonClicked(object sender, EventArgs e)
 	    {
-	        ChooseCityPicker.Items.Remove(ChooseCityPicker.SelectedItem as string);
+	        string cityName = ChooseCityPicker.SelectedItem as string;
+            ChooseCityPicker.Items.Remove(ChooseCityPicker.SelectedItem as string);
+	        try
+	        {
+                string cityKey = await API.GetCityKey(cityName);
+
+                CityRepository.DeleteCityFromDb(new City { Code = cityKey, Name = ChooseCityPicker.SelectedItem as string });
+            }
+	        catch (Exception exception)
+	        {
+	            EntryCityName.Text = exception.Message;
+	        }
+            
 	    }
 	}
 }

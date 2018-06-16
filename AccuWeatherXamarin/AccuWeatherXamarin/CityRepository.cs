@@ -28,5 +28,10 @@ namespace AccuWeatherXamarin
             }
             return cities;
         }
+
+        public static void DeleteCityFromDb(City city)
+        {
+            Application.Current.Properties.Remove(city.Code);
+        }
     }
 }
