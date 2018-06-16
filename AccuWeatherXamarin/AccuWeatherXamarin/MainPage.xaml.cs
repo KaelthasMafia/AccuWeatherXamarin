@@ -19,7 +19,7 @@ namespace AccuWeatherXamarin
 	    public async void SearchByCityButtonClicked(object sender, EventArgs e)
 	    {
 	        string cityKey = "";
-            cityKey = await API.GetCityKey(EntryCityName.Text);
+            cityKey = await API.GetCityKey(ChooseCityPicker.SelectedItem.ToString());
             Weather weather = await API.GetWeatherForCity(cityKey);
             BindingContext = weather;
         }
@@ -27,7 +27,7 @@ namespace AccuWeatherXamarin
 	    public async void AddNewCityButtonClicked(object sender, EventArgs e)
 	    {
 	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
-            Application.Current.Properties.Add(cityKey, AddNewCityEntry.Text);
+            CityRepository.AddCityToDb(new City { Code = cityKey, Name = AddNewCityEntry.Text });
 	    }
 	}
 }

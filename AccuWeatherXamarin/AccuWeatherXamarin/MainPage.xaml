@@ -6,7 +6,8 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Entry x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>
+        <Picker x:Name="ChooseCityPicker" VerticalOptions="Center" HorizontalOptions="Fill" ItemsSource="{Binding Cities}"/>
+        <!--<Entry x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>-->
         <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked"/>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
