@@ -19,15 +19,14 @@ namespace AccuWeatherXamarin
 
         static async Task<Weather> GetWeatherForCity(string cityKey)
         {
-            string query = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + cityKey + "?apikey=" + key;
+            string query = "http://dataservice.accuweather.com/currentconditions/v1/" + cityKey + "?apikey=" + key;
             dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
             Weather weather = new Weather();
             try
             {
-                weather.Text = (string) results["Headline"]["Text"];
-                weather.Category = (string) results["Headline"]["Category"];
-                weather.MinTemperature = (string) results["DailyForecasts"][0]["Temperature"]["Minimum"]["Value"];
-                weather.MaxTemperature = (string) results["DailyForecasts"][0]["Temperature"]["Maximum"]["Value"];
+                weather.WeatherText = (string) results[0]["WeatherText"];
+                weather.IsDayTime = (string) results[0]["IsDayTime"] == "True" ? "Day" : "Night";
+                weather.Temperature = (string) results["Temperature"]["Metric"]["Value"] + " C";
             }
             catch (Exception)
             {
