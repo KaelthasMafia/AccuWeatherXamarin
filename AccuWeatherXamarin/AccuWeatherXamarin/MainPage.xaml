@@ -7,18 +7,18 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Picker x:Name="ChooseCityPicker" VerticalOptions="Center" HorizontalOptions="Fill" ItemsSource="{Binding Cities}"/>
-        <!--<Entry x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>-->
+        <Entry x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>
         <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked"/>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
                 <Label Text="Weather"/>
-                <Label Text="{Binding Weather.WeatherText}"/>
+                <Label Text="{Binding WeatherText}"/>
 
                 <Label Text="Day Time"/>
-                <Label Text="{Binding Weather.IsDayTime}"/>
+                <Label Text="{Binding IsDayTime}"/>
 
                 <Label Text="Temperature"/>
-                <Label Text="{Binding Weather.Temperature}"/>
+                <Label Text="{Binding Temperature}"/>
             </StackLayout>
         </ScrollView>
         <Entry x:Name="AddNewCityEntry" VerticalOptions="End" HorizontalOptions="Fill"/>

@@ -1,4 +1,6 @@
 ﻿using System;
+using AccuWeatherXamarin;
+using AccuWeatherXamarin.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing
@@ -7,9 +9,15 @@ namespace Testing
     public class DbTesting
     {
         [TestMethod]
-        public void TestDb()
+        public void GetCityListTest()
         {
+            CityRepository.GetCityList();
+        }
 
+        [TestMethod]
+        public void AddCityToDb()
+        {
+            CityRepository.AddCityToDb(new City {Code = "323903", Name = "Kharkiv"});
         }
     }
 }
