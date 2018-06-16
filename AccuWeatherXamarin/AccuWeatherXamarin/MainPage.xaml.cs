@@ -29,8 +29,11 @@ namespace AccuWeatherXamarin
 	            EntryCityName.Text = ex.Message;
 	        }
 
-	        //Weather weather = await API.GetWeatherForCity(cityKey);
-	        //BindingContext = weather;
-	    }
+	            Weather weather = await API.GetWeatherForCity(cityKey);
+
+
+
+            BindingContext = weather;
+        }
 	}
 }

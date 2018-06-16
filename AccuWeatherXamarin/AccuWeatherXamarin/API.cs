@@ -9,15 +9,16 @@ namespace AccuWeatherXamarin
 {
     public static class API
     {
-        static string key = "l1CyGVXxsZKVMISp6Ai3DUG8Ajh8Beex";
+        static string key = "YAe7pbXKOxjEGGIXDZU5ddE4lZFf0JBx";
         public static async Task<string> GetCityKey(string cityName)
         {
-            string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + "cityName";
+            string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + "Kharkiv";
             dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
+            string cityKey = "";
             //if (results[0] != null)
             //{
-                string cityKey = (string) results[0]["Key"];
-                return cityKey;
+            cityKey = (string)results[0]["Key"];
+            return cityKey;
             //}
             //else
             //{
@@ -35,7 +36,7 @@ namespace AccuWeatherXamarin
             {
                 WeatherText = (string)results[0]["WeatherText"],
                 IsDayTime = (string)results[0]["IsDayTime"] == "True" ? "Day" : "Night",
-                Temperature = (string)results["Temperature"]["Metric"]["Value"] + " C"
+                Temperature = (string)results[0]["Temperature"]["Metric"]["Value"] + " C"
             };
 
             return weather;

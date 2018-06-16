@@ -1,14 +1,17 @@
 ﻿using System;
+using AccuWeatherXamarin;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing
 {
     [TestClass]
-    public class UnitTest1
+    public class JsonTesting
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CityKeyTest()
         {
+            Assert.Equals(API.GetCityKey("Kharkiv"), "323903");
+
         }
     }
 }
