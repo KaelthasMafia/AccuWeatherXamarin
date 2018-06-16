@@ -10,6 +10,8 @@ namespace AccuWeatherXamarin.Models
 
         public string Category { get; set; }
 
-        public string Temperature { get; set; }
+        public string MinTemperature { get; set; }
+
+        public string MaxTemperature { get; set; }
     }
 }
