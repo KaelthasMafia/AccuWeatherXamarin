@@ -15,9 +15,11 @@ namespace AccuWeatherXamarin
 		{
 			InitializeComponent();
 		    mainPageViewModel = new MainPageViewModel {Cities = CityRepository.GetCityList()};
-		    BindingContext = mainPageViewModel;
-            ChooseCityPicker.Items.Add("Kharkiv");
-            ChooseCityPicker.Items.Add("Kyiv");
+            //BindingContext = mainPageViewModel;
+            foreach (var currentProperty in Application.Current.Properties)
+            {
+                ChooseCityPicker.Items.Add(currentProperty.Value as string);
+            }
 		}
 
 	    public async void SearchByCityButtonClicked(object sender, EventArgs e)
@@ -31,10 +33,20 @@ namespace AccuWeatherXamarin
 
 	    public async void AddNewCityButtonClicked(object sender, EventArgs e)
 	    {
+	        foreach (var currentProperty in Application.Current.Properties)
+	        {
+	            if (currentProperty.Value as string == AddNewCityEntry.Text)
+	            {
+	                EntryCityName.Text = "This city already exist";
+                    return;
+	            }
+	        }
 	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
 	        CityRepository.AddCityToDb(new City { Code = cityKey, Name = AddNewCityEntry.Text });
-	        mainPageViewModel.Cities.Add(AddNewCityEntry.Text);
+	        ChooseCityPicker.Items.Add(AddNewCityEntry.Text);
             //BindingContext = mainPageViewModel;
 	    }
+
+
 	}
 }
