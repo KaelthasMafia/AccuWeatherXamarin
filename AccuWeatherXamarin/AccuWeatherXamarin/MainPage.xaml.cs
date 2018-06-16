@@ -19,21 +19,15 @@ namespace AccuWeatherXamarin
 	    public async void SearchByCityButtonClicked(object sender, EventArgs e)
 	    {
 	        string cityKey = "";
-
-            try
-	        {
-	            cityKey = await API.GetCityKey("Kharkiv");
-	        }
-	        catch (Exception ex)
-	        {
-	            EntryCityName.Text = ex.Message;
-	        }
-
-	            Weather weather = await API.GetWeatherForCity(cityKey);
-
-
-
+            cityKey = await API.GetCityKey(EntryCityName.Text);
+            Weather weather = await API.GetWeatherForCity(cityKey);
             BindingContext = weather;
         }
+
+	    public async void AddNewCityButtonClicked(object sender, EventArgs e)
+	    {
+	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
+            Application.Current.Properties.Add(cityKey, AddNewCityEntry.Text);
+	    }
 	}
 }

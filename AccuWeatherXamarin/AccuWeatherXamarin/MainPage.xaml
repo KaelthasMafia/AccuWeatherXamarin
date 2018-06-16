@@ -20,6 +20,8 @@
                 <Label Text="{Binding Temperature}"/>
             </StackLayout>
         </ScrollView>
+        <Entry x:Name="AddNewCityEntry" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <Button x:Name="AddNewCityButton" VerticalOptions="End" HorizontalOptions="End" Text="Add new city" Clicked="AddNewCityButtonClicked"/>
     </StackLayout>
 
 </ContentPage>

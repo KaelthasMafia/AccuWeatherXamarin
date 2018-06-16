@@ -9,10 +9,10 @@ namespace AccuWeatherXamarin
 {
     public static class API
     {
-        static string key = "YAe7pbXKOxjEGGIXDZU5ddE4lZFf0JBx";
+        static string key = "FCnmKM5grGDIqfC92eGnpOGyGNKv0S4L";
         public static async Task<string> GetCityKey(string cityName)
         {
-            string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + "Kharkiv";
+            string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
             dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
             string cityKey = "";
             //if (results[0] != null)
