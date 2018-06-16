@@ -26,7 +26,6 @@ namespace AccuWeatherXamarin
             {
                 cities.Add(currentProperty.Value as string);
             }
-
             return cities;
         }
     }

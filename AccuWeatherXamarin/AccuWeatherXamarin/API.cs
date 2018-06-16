@@ -15,17 +15,8 @@ namespace AccuWeatherXamarin
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
             dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
             string cityKey = "";
-            //if (results[0] != null)
-            //{
             cityKey = (string)results[0]["Key"];
             return cityKey;
-            //}
-            //else
-            //{
-            //    return null;
-            //}
-
-
         }
 
         public static async Task<Weather> GetWeatherForCity(string cityKey)
@@ -38,7 +29,6 @@ namespace AccuWeatherXamarin
                 IsDayTime = (string)results[0]["IsDayTime"] == "True" ? "Day" : "Night",
                 Temperature = (string)results[0]["Temperature"]["Metric"]["Value"] + " C"
             };
-
             return weather;
         }
     }
