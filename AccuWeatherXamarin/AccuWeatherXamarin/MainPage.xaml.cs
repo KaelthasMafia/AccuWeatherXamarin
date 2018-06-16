@@ -47,6 +47,9 @@ namespace AccuWeatherXamarin
             //BindingContext = mainPageViewModel;
 	    }
 
-
+	    public void DeleteCityButtonClicked(object sender, EventArgs e)
+	    {
+	        ChooseCityPicker.Items.Remove(ChooseCityPicker.SelectedItem as string);
+	    }
 	}
 }
