@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="JsonTesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbTesting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

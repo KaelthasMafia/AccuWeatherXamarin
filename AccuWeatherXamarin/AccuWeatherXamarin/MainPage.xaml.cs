@@ -10,10 +10,13 @@ namespace AccuWeatherXamarin
 {
 	public partial class MainPage : ContentPage
 	{
+	    private readonly MainPageViewModel mainPageViewModel;
 		public MainPage()
 		{
 			InitializeComponent();
-		    BindingContext = new Weather();
+		    mainPageViewModel = new MainPageViewModel {Cities = CityRepository.GetCityList()};
+		    BindingContext = mainPageViewModel;
+
 		}
 
 	    public async void SearchByCityButtonClicked(object sender, EventArgs e)
@@ -21,13 +24,21 @@ namespace AccuWeatherXamarin
 	        string cityKey = "";
             cityKey = await API.GetCityKey(ChooseCityPicker.SelectedItem.ToString());
             Weather weather = await API.GetWeatherForCity(cityKey);
-            BindingContext = weather;
+	        mainPageViewModel.Weather = weather;
+            BindingContext = mainPageViewModel;
         }
 
 	    public async void AddNewCityButtonClicked(object sender, EventArgs e)
 	    {
-	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
-            CityRepository.AddCityToDb(new City { Code = cityKey, Name = AddNewCityEntry.Text });
+	        AddNewCity();
+	        BindingContext = mainPageViewModel;
 	    }
+
+	    private async void AddNewCity()
+	    {
+	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
+	        CityRepository.AddCityToDb(new City { Code = cityKey, Name = AddNewCityEntry.Text });
+	        mainPageViewModel.Cities = CityRepository.GetCityList();
+        }
 	}
 }
