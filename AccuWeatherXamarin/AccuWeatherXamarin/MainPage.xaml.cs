@@ -15,7 +15,6 @@ namespace AccuWeatherXamarin
 		{
 			InitializeComponent();
 		    mainPageViewModel = new MainPageViewModel {Cities = CityRepository.GetCityList()};
-            //BindingContext = mainPageViewModel;
             foreach (var currentProperty in Application.Current.Properties)
             {
                 ChooseCityPicker.Items.Add(currentProperty.Value as string);
@@ -33,18 +32,11 @@ namespace AccuWeatherXamarin
 
 	    public async void AddNewCityButtonClicked(object sender, EventArgs e)
 	    {
-	        foreach (var currentProperty in Application.Current.Properties)
-	        {
-	            if (currentProperty.Value as string == AddNewCityEntry.Text)
-	            {
-	                EntryCityName.Text = "This city already exist";
-                    return;
-	            }
-	        }
+	        if(this.CheckExistingCity())
+            { return;}
 	        string cityKey = await API.GetCityKey(AddNewCityEntry.Text);
 	        CityRepository.AddCityToDb(new City { Code = cityKey, Name = AddNewCityEntry.Text });
 	        ChooseCityPicker.Items.Add(AddNewCityEntry.Text);
-            //BindingContext = mainPageViewModel;
 	    }
 
 	    public async void DeleteCityButtonClicked(object sender, EventArgs e)
@@ -62,6 +54,20 @@ namespace AccuWeatherXamarin
 	            EntryCityName.Text = exception.Message;
 	        }
             
+	    }
+
+	    public bool CheckExistingCity()
+	    {
+	        foreach (var currentProperty in Application.Current.Properties)
+	        {
+	            if (currentProperty.Value as string == AddNewCityEntry.Text)
+	            {
+	                EntryCityName.Text = "This city already exist";
+	                return true;
+	            }
+	        }
+
+	        return false;
 	    }
 	}
 }
