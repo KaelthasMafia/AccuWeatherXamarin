@@ -13,9 +13,9 @@ namespace Testing
         [TestMethod]
         public void CheckExistingCityTest()
         {
-            AutomationElement rootElement = AutomationElement.RootElement;
-            Assert.IsNotNull(rootElement);
-
+            //AutomationElement rootElement = AutomationElement.RootElement;
+            //Assert.IsNotNull(rootElement);
+            Assert.AreEqual(MainPage.CheckExistingCity("Kharkiv"), false);
             //AutomationElement appElement = rootElement.GetControlElement()
         }
     }

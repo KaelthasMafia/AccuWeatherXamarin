@@ -22,7 +22,7 @@ namespace Testing
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public async Task GetCityKeyInvalidCityNameTest()
         {
-            await API.GetCityKey("InvelidData");
+            await API.GetCityKey("InvalidData");
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace Testing
         [ExpectedException(typeof(RuntimeBinderException))]
         public async Task GetWeatherForCityInvalidKeyTest()
         {
-            var weather = await API.GetWeatherForCity("123123123123123");
+            var weather = await API.GetWeatherForCity("InvalidData");
         }
     }
 }
