@@ -9,7 +9,7 @@ namespace AccuWeatherXamarin
 {
     public static class API
     {
-        static string key = "X7Nmkx6DNEHVjVXa4KBp1gNrLTJTJn1y";
+        static string key = "MZVGtvqFM9AImHjU0YGwl5mpURNmVBsV";
         public static async Task<string> GetCityKey(string cityName)
         {
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
