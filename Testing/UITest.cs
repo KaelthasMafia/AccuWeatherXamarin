@@ -2,6 +2,8 @@
 using System.Windows.Automation;
 using AccuWeatherXamarin;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using UI.AutomationTests.UnitTests.Core;
+
 
 namespace Testing
 {
@@ -14,7 +16,7 @@ namespace Testing
             AutomationElement rootElement = AutomationElement.RootElement;
             Assert.IsNotNull(rootElement);
 
-            //AutomationElement appElement = rootElement.Get
+            //AutomationElement appElement = rootElement.GetControlElement()
         }
     }
 }
