@@ -14,8 +14,7 @@ namespace AccuWeatherXamarin
         {
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
             dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
-            string cityKey = "";
-            cityKey = (string)results[0]["Key"];
+            string cityKey = (string)results[0]["Key"];
             return cityKey;
         }
 
