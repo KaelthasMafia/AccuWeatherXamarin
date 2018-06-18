@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AccuWeatherXamarin.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace AccuWeatherXamarin
 {
@@ -24,7 +25,7 @@ namespace AccuWeatherXamarin
                 var weather = await API.GetWeatherForCity(cityKey);
                 BindingContext = weather;
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 EntryCityName.Text = "Please, choose city from picker!";
             }
@@ -60,10 +61,12 @@ namespace AccuWeatherXamarin
 
         public static bool CheckExistingCity(string cityName)
         {
-            //foreach (var currentProperty in Application.Current.Properties)
-            //    if (currentProperty.Value as string == cityName) return true;
+            foreach (var currentProperty in Application.Current.Properties)
+                if (currentProperty.Value as string == cityName) return true;
 
             return false;
         }
+
+        
     }
 }
