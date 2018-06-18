@@ -14,7 +14,11 @@ namespace CalculatorTest
         protected static RemoteWebElement NotificationElement;
         protected static RemoteWebElement SearchByCityElement;
         protected static RemoteWebElement ChooseCityElement;
-        protected static RemoteWebElement ComboBoxItemFirst;
+        protected static RemoteWebElement WeatherTextFirstElement;
+        protected static RemoteWebElement WeatherTextSecondElement;
+        protected static RemoteWebElement WeatherTextThirdElement;
+        protected static RemoteWebElement AddNewCityElement;
+        protected static RemoteWebElement AddNewCityTextElement;
 
         [ClassInitialize]
         public static void Setup(TestContext context)
@@ -35,6 +39,16 @@ namespace CalculatorTest
             Assert.IsNotNull(NotificationElement);
             ChooseCityElement = AppSession.FindElementByClassName("ComboBox") as RemoteWebElement;
             Assert.IsNotNull(ChooseCityElement);
+            WeatherTextFirstElement = AppSession.FindElementsByClassName("TextBox")[1] as RemoteWebElement;
+            Assert.IsNotNull(ChooseCityElement);
+            WeatherTextSecondElement = AppSession.FindElementsByClassName("TextBox")[2] as RemoteWebElement;
+            Assert.IsNotNull(ChooseCityElement);
+            WeatherTextThirdElement = AppSession.FindElementsByClassName("TextBox")[3] as RemoteWebElement;
+            Assert.IsNotNull(ChooseCityElement);
+            AddNewCityElement = AppSession.FindElementByName("Add new city") as RemoteWebElement;
+            Assert.IsNotNull(ChooseCityElement);
+            AddNewCityTextElement = AppSession.FindElementsByClassName("TextBox")[4] as RemoteWebElement;
+            Assert.IsNotNull(ChooseCityElement);
         }
 
         [ClassCleanup]
@@ -46,18 +60,27 @@ namespace CalculatorTest
         }
 
         [TestMethod]
-        public void SearchByCityTestCase()
+        public void SearchWeatherByCityTestCase()
         {
-            string s = "Please, choose city from picker!";
             SearchByCityElement.Click();
-            Assert.AreEqual(s, NotificationElement.Text);
+            System.Threading.Thread.Sleep(3000);
+            CheckWeatherFields();
+        }
 
-            ChooseCityElement.Click();
-            ComboBoxItemFirst = AppSession.FindElementsByClassName("ComboBoxItem")[0] as RemoteWebElement;
-            Assert.IsNotNull(ComboBoxItemFirst);
-            ComboBoxItemFirst.Click();
-            System.Threading.Thread.Sleep(5000);
-            Assert.AreEqual("", NotificationElement.Text);
+        [TestMethod]
+        public void AddExistingCityToDb()
+        {
+            AddNewCityTextElement.SendKeys("Kharkiv");
+            AddNewCityElement.Click();
+            System.Threading.Thread.Sleep(3000);
+            Assert.AreEqual(NotificationElement.Text, "This city already exist");
+        }
+
+        public void CheckWeatherFields()
+        {
+            Assert.AreNotEqual(WeatherTextFirstElement.Text, "");
+            Assert.AreNotEqual(WeatherTextSecondElement.Text, "");
+            Assert.AreNotEqual(WeatherTextThirdElement.Text, "");
         }
     }
 }
