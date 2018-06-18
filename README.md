@@ -1,6 +1,6 @@
 # AccuWeatherXamarin
 
-To launch AccuWeatherXamarin.UWP application you must have Windows 10 Fall Creators Update (10.0; Build 16299) or higher
+To launch AccuWeatherXamarin.UWP application you must have Windows 10 Fall Creators Update (10.0; Build 16299) or higher.
 
 To test this application you have to download Windows Application Driver by the following link http://download.microsoft.com/download/6/8/7/687DEE85-E907-4A95-8035-8BC969B9EA95/WindowsApplicationDriver.msi
 
