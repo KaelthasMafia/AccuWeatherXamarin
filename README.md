@@ -2,8 +2,8 @@
 
 To launch AccuWeatherXamarin.UWP application you must have Windows 10 Fall Creators Update (10.0; Build 16299) or higher
 
-To test this application you need download Windows Application Driver by the following link http://download.microsoft.com/download/6/8/7/687DEE85-E907-4A95-8035-8BC969B9EA95/WindowsApplicationDriver.msi
+To test this application you have to download Windows Application Driver by the following link http://download.microsoft.com/download/6/8/7/687DEE85-E907-4A95-8035-8BC969B9EA95/WindowsApplicationDriver.msi
 
-Then you need run this application, which will be in C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe and run solution in debug mode, which install the application to your computer. 
+Then you have to run this application, which you can find in C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe, and run solution in debug mode, which would install the application on your computer. 
 
-If application doesn't works - you need to change API key in sourse code (MainForm.xaml.cs), because AccuWeather free API has a limited number of requests.
+In case the application doesn't work, you need to change the API key in sourse code (MainForm.xaml.cs), because AccuWeather free API allows limited number of requests.
