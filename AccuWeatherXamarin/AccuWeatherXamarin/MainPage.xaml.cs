@@ -15,6 +15,10 @@ namespace AccuWeatherXamarin
         {
             InitializeComponent();
             foreach (var currentProperty in Application.Current.Properties) ChooseCityPicker.Items.Add(currentProperty.Value as string);
+            if (ChooseCityPicker.Items.Count > 0)
+            {
+                ChooseCityPicker.SelectedIndex = 0;
+            }
         }
 
         public async void SearchByCityButtonClicked(object sender, EventArgs e)

@@ -13,13 +13,13 @@
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
                 <Label Text="Weather"/>
-                <Label Text="{Binding WeatherText}"/>
+                <Entry Text="{Binding WeatherText}"/>
 
                 <Label Text="Day Time"/>
-                <Label Text="{Binding IsDayTime}"/>
+                <Entry Text="{Binding IsDayTime}"/>
 
                 <Label Text="Temperature"/>
-                <Label Text="{Binding Temperature}"/>
+                <Entry Text="{Binding Temperature}"/>
             </StackLayout>
         </ScrollView>
         <Entry x:Name="AddNewCityEntry" VerticalOptions="End" HorizontalOptions="Fill"/>
