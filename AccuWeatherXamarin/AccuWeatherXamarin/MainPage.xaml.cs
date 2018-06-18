@@ -12,15 +12,23 @@ namespace AccuWeatherXamarin
     public partial class MainPage : ContentPage
     {
         private readonly API api;
+
         public MainPage()
         {
             InitializeComponent();
-            foreach (var currentProperty in Application.Current.Properties) ChooseCityPicker.Items.Add(currentProperty.Value as string);
+            if (Application.Current.Properties.Count == 0)
+            {
+                CityRepository.AddCityToDb(new City {Code = "323903", Name = "Kharkiv"});
+            }
+
+            foreach (var currentProperty in Application.Current.Properties)
+                ChooseCityPicker.Items.Add(currentProperty.Value as string);
             if (ChooseCityPicker.Items.Count > 0)
             {
                 ChooseCityPicker.SelectedIndex = 0;
             }
-            api = new API("APBox2VjIW5hH9z4CjkeiaCM7NFu33K3");
+
+            api = new API("ryEaQiGQoaLIDX9vpH64l3RpZJ4bd2xA");
         }
 
         public async void SearchByCityButtonClicked(object sender, EventArgs e)
@@ -72,11 +80,9 @@ namespace AccuWeatherXamarin
         public static bool CheckExistingCity(string cityName)
         {
             foreach (var currentProperty in Application.Current.Properties)
-                if (currentProperty.Value as string == cityName) return true;
-
+                if (currentProperty.Value as string == cityName)
+                    return true;
             return false;
         }
-
-        
     }
 }
