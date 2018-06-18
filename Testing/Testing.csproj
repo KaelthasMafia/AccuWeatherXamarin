@@ -66,12 +66,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomationElementExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APITest.cs" />
-    <Compile Include="CityRepositoryTest.cs" />
     <Compile Include="DataServiceTest.cs" />
-    <Compile Include="UITest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

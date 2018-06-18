@@ -11,6 +11,7 @@ namespace AccuWeatherXamarin
 {
     public partial class MainPage : ContentPage
     {
+        private readonly API api;
         public MainPage()
         {
             InitializeComponent();
@@ -19,14 +20,15 @@ namespace AccuWeatherXamarin
             {
                 ChooseCityPicker.SelectedIndex = 0;
             }
+            api = new API("APBox2VjIW5hH9z4CjkeiaCM7NFu33K3");
         }
 
         public async void SearchByCityButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                var cityKey = await API.GetCityKey(ChooseCityPicker.SelectedItem.ToString());
-                var weather = await API.GetWeatherForCity(cityKey);
+                var cityKey = await api.GetCityKey(ChooseCityPicker.SelectedItem.ToString());
+                var weather = await api.GetWeatherForCity(cityKey);
                 BindingContext = weather;
                 NotificationEntry.Text = "";
             }
@@ -46,7 +48,7 @@ namespace AccuWeatherXamarin
 
             try
             {
-                var cityKey = await API.GetCityKey(AddNewCityEntry.Text);
+                var cityKey = await api.GetCityKey(AddNewCityEntry.Text);
                 CityRepository.AddCityToDb(new City {Code = cityKey, Name = AddNewCityEntry.Text});
                 ChooseCityPicker.Items.Add(AddNewCityEntry.Text);
                 NotificationEntry.Text = "Successfully saved!";
@@ -62,7 +64,7 @@ namespace AccuWeatherXamarin
         {
             var cityName = ChooseCityPicker.SelectedItem as string;
             ChooseCityPicker.Items.Remove(ChooseCityPicker.SelectedItem as string);
-            var cityKey = await API.GetCityKey(cityName);
+            var cityKey = await api.GetCityKey(cityName);
             CityRepository.DeleteCityFromDb(new City {Code = cityKey, Name = ChooseCityPicker.SelectedItem as string});
             NotificationEntry.Text = "Successfully deleted!";
         }

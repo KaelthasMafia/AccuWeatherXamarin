@@ -10,11 +10,19 @@ namespace Testing
     [TestClass]
     public class APITest
     {
+        private API api;
+
+        public APITest()
+        {
+            api = new API("APBox2VjIW5hH9z4CjkeiaCM7NFu33K3");
+        }
+        
+
         [TestMethod]
         public async Task GetCityKeyTest()
         {
             string result;
-            result = await API.GetCityKey("Kharkiv");
+            result = await api.GetCityKey("Kharkiv");
             Assert.AreEqual(result, "323903");
         }
 
@@ -22,13 +30,13 @@ namespace Testing
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public async Task GetCityKeyInvalidCityNameTest()
         {
-            await API.GetCityKey("InvalidData");
+            await api.GetCityKey("InvalidData");
         }
 
         [TestMethod]
         public async Task GetWeatherForCityTest()
         {
-            var weather = await API.GetWeatherForCity("323903");
+            var weather = await api.GetWeatherForCity("323903");
             Assert.IsNotNull(weather);
             Assert.IsNotNull(weather.IsDayTime);
             Assert.IsNotNull(weather.Temperature);
@@ -39,7 +47,7 @@ namespace Testing
         [ExpectedException(typeof(RuntimeBinderException))]
         public async Task GetWeatherForCityInvalidKeyTest()
         {
-            var weather = await API.GetWeatherForCity("InvalidData");
+            var weather = await api.GetWeatherForCity("InvalidData");
         }
     }
 }

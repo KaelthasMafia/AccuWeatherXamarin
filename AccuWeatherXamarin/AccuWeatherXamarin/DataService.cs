@@ -9,7 +9,7 @@ namespace AccuWeatherXamarin
 {
     public class DataService
     {
-        public static async Task<dynamic> GetDataFromService(string queryString)
+        public async Task<dynamic> GetDataFromService(string queryString)
         {
             HttpClient client = new HttpClient();
             var response = await client.GetAsync(queryString);

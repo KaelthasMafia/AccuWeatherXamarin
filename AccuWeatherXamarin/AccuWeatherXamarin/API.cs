@@ -7,21 +7,29 @@ using Newtonsoft.Json.Linq;
 
 namespace AccuWeatherXamarin
 {
-    public static class API
+    public class API
     {
-        static string key = "G2y3dolkpd2UsdbnjwjvCZWgl0DhyMw3";
-        public static async Task<string> GetCityKey(string cityName)
+        private readonly string key;
+        private readonly DataService dataService;
+        public API(string key)
+        {
+            this.key = key;
+            dataService = new DataService();
+        }
+
+         //"APBox2VjIW5hH9z4CjkeiaCM7NFu33K3";
+        public async Task<string> GetCityKey(string cityName)
         {
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
-            dynamic results = await DataService.GetDataFromService(query).ConfigureAwait(false);
+            dynamic results = await dataService.GetDataFromService(query).ConfigureAwait(false);
             string cityKey = (string)results[0]["Key"];
             return cityKey;
         }
 
-        public static async Task<Weather> GetWeatherForCity(string cityKey)
+        public async Task<Weather> GetWeatherForCity(string cityKey)
         {
             string query = "http://dataservice.accuweather.com/currentconditions/v1/" + cityKey + "?apikey=" + key;
-            JArray results = await DataService.GetDataFromService(query).ConfigureAwait(false);
+            JArray results = await dataService.GetDataFromService(query).ConfigureAwait(false);
             Weather weather = new Weather
             {
                 WeatherText = (string)results[0]["WeatherText"],
