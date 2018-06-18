@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Appium.iOS;
 
-namespace CalculatorTest
+namespace UITests
 {
     [TestClass]
     public class BasicScenarios
@@ -27,8 +27,6 @@ namespace CalculatorTest
         {
             //Launch the app
             DesiredCapabilities appCapabilities = new DesiredCapabilities();
-
-            //appCapabilities.SetCapability("app", "57b3a460-8843-4d84-822a-9f316274c2bf_tz6ph9wdjhqw8!App");
             appCapabilities.SetCapability("app", "3b9d9494-f83b-449b-a02c-0756116b7ce_3n2mstymjasv4!App");
             AppSession = new RemoteWebDriver(new Uri(WindowsApplicationDriverUrl), appCapabilities);
             Assert.IsNotNull(AppSession);
