@@ -7,7 +7,7 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Picker x:Name="ChooseCityPicker" VerticalOptions="Center" HorizontalOptions="Fill" ItemsSource="{Binding Cities}"/>
-        <Entry class="NewClass" x:Name="EntryCityName" HorizontalOptions="Fill" VerticalOptions="Start"/>
+        <Entry class="NewClass" x:Name="NotificationEntry" HorizontalOptions="Fill" VerticalOptions="Start"/>
         <Button x:Name="DeleteCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked ="DeleteCityButtonClicked" Text="Delete choosen city"/>
         <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked" Text ="Search weather by choosen city"/>
         <ScrollView VerticalOptions="FillAndExpand">

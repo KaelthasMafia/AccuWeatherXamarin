@@ -24,10 +24,11 @@ namespace AccuWeatherXamarin
                 var cityKey = await API.GetCityKey(ChooseCityPicker.SelectedItem.ToString());
                 var weather = await API.GetWeatherForCity(cityKey);
                 BindingContext = weather;
+                NotificationEntry.Text = "";
             }
             catch (Exception)
             {
-                EntryCityName.Text = "Please, choose city from picker!";
+                NotificationEntry.Text = "Please, choose city from picker!";
             }
         }
 
@@ -35,7 +36,7 @@ namespace AccuWeatherXamarin
         {
             if (CheckExistingCity(AddNewCityEntry.Text))
             {
-                EntryCityName.Text = "This city already exist";
+                NotificationEntry.Text = "This city already exist";
                 return;
             }
 
@@ -47,7 +48,7 @@ namespace AccuWeatherXamarin
             }
             catch (ArgumentOutOfRangeException)
             {
-                EntryCityName.Text = "Invalid city name!";
+                NotificationEntry.Text = "Invalid city name!";
             }
         }
 
