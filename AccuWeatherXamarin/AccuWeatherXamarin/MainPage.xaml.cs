@@ -49,6 +49,8 @@ namespace AccuWeatherXamarin
                 var cityKey = await API.GetCityKey(AddNewCityEntry.Text);
                 CityRepository.AddCityToDb(new City {Code = cityKey, Name = AddNewCityEntry.Text});
                 ChooseCityPicker.Items.Add(AddNewCityEntry.Text);
+                NotificationEntry.Text = "Successfully saved!";
+                ChooseCityPicker.SelectedIndex = 0;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -62,6 +64,7 @@ namespace AccuWeatherXamarin
             ChooseCityPicker.Items.Remove(ChooseCityPicker.SelectedItem as string);
             var cityKey = await API.GetCityKey(cityName);
             CityRepository.DeleteCityFromDb(new City {Code = cityKey, Name = ChooseCityPicker.SelectedItem as string});
+            NotificationEntry.Text = "Successfully deleted!";
         }
 
         public static bool CheckExistingCity(string cityName)

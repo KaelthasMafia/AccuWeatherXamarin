@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Remote;
@@ -19,7 +20,8 @@ namespace CalculatorTest
         protected static RemoteWebElement WeatherTextThirdElement;
         protected static RemoteWebElement AddNewCityElement;
         protected static RemoteWebElement AddNewCityTextElement;
-
+        protected static RemoteWebElement DeleteCityElement;
+        
         [ClassInitialize]
         public static void Setup(TestContext context)
         {
@@ -49,6 +51,8 @@ namespace CalculatorTest
             Assert.IsNotNull(ChooseCityElement);
             AddNewCityTextElement = AppSession.FindElementsByClassName("TextBox")[4] as RemoteWebElement;
             Assert.IsNotNull(ChooseCityElement);
+            DeleteCityElement = AppSession.FindElementByName("Delete choosen city") as RemoteWebElement;
+            Assert.IsNotNull(DeleteCityElement);
         }
 
         [ClassCleanup]
@@ -60,20 +64,46 @@ namespace CalculatorTest
         }
 
         [TestMethod]
+        public void AddAndDeleteNewCityCorrectly()
+        {
+            DeleteCityElement.Click();
+            Thread.Sleep(3000);
+            Assert.AreEqual(NotificationElement.Text, "Successfully deleted!");
+
+            AddNewCityTextElement.Clear();
+            AddNewCityTextElement.SendKeys("Kharkiv");
+            AddNewCityElement.Click();
+            Thread.Sleep(3000);
+            Assert.AreEqual(NotificationElement.Text, "Successfully saved!");
+        }
+
+        [TestMethod]
         public void SearchWeatherByCityTestCase()
         {
             SearchByCityElement.Click();
-            System.Threading.Thread.Sleep(3000);
+            Thread.Sleep(3000);
             CheckWeatherFields();
         }
 
         [TestMethod]
-        public void AddExistingCityToDb()
+        public void AddExistingCity()
         {
+            AddNewCityTextElement.Clear();
             AddNewCityTextElement.SendKeys("Kharkiv");
             AddNewCityElement.Click();
-            System.Threading.Thread.Sleep(3000);
+            ChooseCityElement.SendKeys("2");
+            Thread.Sleep(3000);
             Assert.AreEqual(NotificationElement.Text, "This city already exist");
+        }
+
+        [TestMethod]
+        public void AddIncorrectCityName()
+        {
+            AddNewCityTextElement.Clear();
+            AddNewCityTextElement.SendKeys("BlaBlaBlaBla");
+            AddNewCityElement.Click();
+            Thread.Sleep(3000);
+            Assert.AreEqual(NotificationElement.Text, "Invalid city name!");
         }
 
         public void CheckWeatherFields()
