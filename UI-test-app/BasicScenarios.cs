@@ -87,9 +87,9 @@ namespace UITests
         public void AddExistingCity()
         {
             AddNewCityTextElement.Clear();
-            AddNewCityTextElement.SendKeys("Kharkiv");
+            AddNewCityTextElement.SendKeys("1");
             AddNewCityElement.Click();
-            ChooseCityElement.SendKeys("2");
+            //ChooseCityElement.SendKeys("2");
             Thread.Sleep(3000);
             Assert.AreEqual(NotificationElement.Text, "This city already exist");
         }
