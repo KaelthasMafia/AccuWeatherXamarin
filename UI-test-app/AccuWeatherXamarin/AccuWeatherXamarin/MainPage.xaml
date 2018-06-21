@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AccuWeatherXamarin"
+             x:Class="AccuWeatherXamarin.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Picker x:Name="ChooseCityPicker" VerticalOptions="Center" HorizontalOptions="Fill" ItemsSource="{Binding Cities}"/>
+        <Entry class="NewClass" x:Name="NotificationEntry" HorizontalOptions="Fill" VerticalOptions="Start"/>
+        <Button x:Name="DeleteCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked ="DeleteCityButtonClicked" Text="Delete choosen city"/>
+        <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked" Text ="Search weather by choosen city"/>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+                <Label Text="Weather"/>
+                <Entry Text="{Binding WeatherText}"/>
+
+                <Label Text="Day Time"/>
+                <Entry Text="{Binding IsDayTime}"/>
+
+                <Label Text="Temperature"/>
+                <Entry Text="{Binding Temperature}"/>
+            </StackLayout>
+        </ScrollView>
+        <Entry x:Name="AddNewCityEntry" VerticalOptions="End" HorizontalOptions="Fill"/>
+        <Button x:Name="AddNewCityButton" VerticalOptions="End" HorizontalOptions="End" Text="Add new city" Clicked="AddNewCityButtonClicked"/>
+    </StackLayout>
+
+</ContentPage>
