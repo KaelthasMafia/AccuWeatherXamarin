@@ -87,7 +87,7 @@ namespace UITests
         public void AddExistingCity()
         {
             AddNewCityTextElement.Clear();
-            AddNewCityTextElement.SendKeys("1");
+            AddNewCityTextElement.SendKeys("Kharkiv");
             AddNewCityElement.Click();
             //ChooseCityElement.SendKeys("2");
             Thread.Sleep(3000);
