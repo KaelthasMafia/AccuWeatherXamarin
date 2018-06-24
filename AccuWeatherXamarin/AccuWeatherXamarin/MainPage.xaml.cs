@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccuWeatherXamarin.Models;
+using Microsoft.CSharp.RuntimeBinder;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 
@@ -40,9 +41,9 @@ namespace AccuWeatherXamarin
                 BindingContext = weather;
                 NotificationEntry.Text = "";
             }
-            catch (Exception)
+            catch (RuntimeBinderException exception)
             {
-                NotificationEntry.Text = "Please, choose city from picker!";
+                NotificationEntry.Text = exception.Message;
             }
         }
 
@@ -62,9 +63,9 @@ namespace AccuWeatherXamarin
                 NotificationEntry.Text = "Successfully saved!";
                 ChooseCityPicker.SelectedIndex = 0;
             }
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException exception)
             {
-                NotificationEntry.Text = "Invalid city name!";
+                NotificationEntry.Text = exception.Message;
             }
         }
 

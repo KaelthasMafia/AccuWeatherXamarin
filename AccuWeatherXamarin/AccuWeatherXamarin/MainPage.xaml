@@ -7,19 +7,19 @@
     <StackLayout>
         <!-- Place new controls here -->
         <Picker x:Name="ChooseCityPicker" VerticalOptions="Center" HorizontalOptions="Fill" ItemsSource="{Binding Cities}"/>
-        <Entry class="NewClass" x:Name="NotificationEntry" HorizontalOptions="Fill" VerticalOptions="Start"/>
+        <Entry class="NewClass" x:Name="NotificationEntry" HorizontalOptions="Fill" VerticalOptions="Start" IsEnabled="False"/>
         <Button x:Name="DeleteCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked ="DeleteCityButtonClicked" Text="Delete choosen city"/>
         <Button x:Name="SearchByCityButton" HorizontalOptions="End" VerticalOptions="Start" Clicked="SearchByCityButtonClicked" Text ="Search weather by choosen city"/>
         <ScrollView VerticalOptions="FillAndExpand">
-            <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
+            <StackLayout Padding="10,10,10,10" HorizontalOptions="Fill" >
                 <Label Text="Weather"/>
-                <Entry Text="{Binding WeatherText}"/>
+                <Entry Text="{Binding WeatherText}" IsEnabled="False" HorizontalOptions="Fill"/>
 
                 <Label Text="Day Time"/>
-                <Entry Text="{Binding IsDayTime}"/>
+                <Entry Text="{Binding IsDayTime}" IsEnabled="False" HorizontalOptions="Fill"/>
 
                 <Label Text="Temperature"/>
-                <Entry Text="{Binding Temperature}"/>
+                <Entry Text="{Binding Temperature}" IsEnabled="False" HorizontalOptions="Fill"/>
             </StackLayout>
         </ScrollView>
         <Entry x:Name="AddNewCityEntry" VerticalOptions="End" HorizontalOptions="Fill"/>

@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AccuWeatherXamarin.Models;
 using Newtonsoft.Json.Linq;
+using Microsoft.CSharp.RuntimeBinder;
 
 namespace AccuWeatherXamarin
 {
@@ -22,21 +23,37 @@ namespace AccuWeatherXamarin
         {
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
             dynamic results = await dataService.GetDataFromService(query).ConfigureAwait(false);
-            string cityKey = (string)results[0]["Key"];
-            return cityKey;
+            try
+            {
+                string cityKey = (string)results[0]["Key"];
+                return cityKey;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                throw new ArgumentOutOfRangeException("Invalid city name!");
+            }
+            
         }
 
         public async Task<Weather> GetWeatherForCity(string cityKey)
         {
             string query = "http://dataservice.accuweather.com/currentconditions/v1/" + cityKey + "?apikey=" + key;
             JArray results = await dataService.GetDataFromService(query).ConfigureAwait(false);
-            Weather weather = new Weather
+            try
             {
-                WeatherText = (string)results[0]["WeatherText"],
-                IsDayTime = (string)results[0]["IsDayTime"] == "True" ? "Day" : "Night",
-                Temperature = (string)results[0]["Temperature"]["Metric"]["Value"] + " C"
-            };
-            return weather;
+                Weather weather = new Weather
+                {
+                    WeatherText = (string)results[0]["WeatherText"],
+                    IsDayTime = (string)results[0]["IsDayTime"] == "True" ? "Day" : "Night",
+                    Temperature = (string)results[0]["Temperature"]["Metric"]["Value"] + " C"
+                };
+                return weather;
+            }
+            catch(RuntimeBinderException)
+            {
+                throw new RuntimeBinderException("Please, choose city from picker!");
+            }
+            
         }
     }
 }
