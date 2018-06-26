@@ -104,11 +104,33 @@ namespace UITests
             Assert.AreEqual(NotificationElement.Text, "Invalid city name!");
         }
 
+        [TestMethod]
+        public void AddCityWithIncorrectSymbols()
+        {
+            CheckForIncorrectSymbolsInCityName("!");
+            CheckForIncorrectSymbolsInCityName("№");
+            CheckForIncorrectSymbolsInCityName("@");
+            CheckForIncorrectSymbolsInCityName("$");
+            CheckForIncorrectSymbolsInCityName("^");
+            CheckForIncorrectSymbolsInCityName("&");
+            CheckForIncorrectSymbolsInCityName("*");
+            CheckForIncorrectSymbolsInCityName("1");
+            CheckForIncorrectSymbolsInCityName("123");
+        }
+
         public void CheckWeatherFields()
         {
             Assert.AreNotEqual(WeatherTextFirstElement.Text, "");
             Assert.AreNotEqual(WeatherTextSecondElement.Text, "");
             Assert.AreNotEqual(WeatherTextThirdElement.Text, "");
+        }
+
+        public void CheckForIncorrectSymbolsInCityName(string sendKeys)
+        {
+            AddNewCityTextElement.SendKeys(sendKeys);
+            AddNewCityElement.Click();
+            AddNewCityTextElement.Clear();
+            Assert.AreEqual("City name can contains only letters!", NotificationElement.Text);
         }
     }
 }

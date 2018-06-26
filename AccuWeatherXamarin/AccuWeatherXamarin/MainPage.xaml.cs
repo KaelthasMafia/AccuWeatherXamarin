@@ -49,6 +49,12 @@ namespace AccuWeatherXamarin
 
         public async void AddNewCityButtonClicked(object sender, EventArgs e)
         {
+            if (!BL.StringIsValid(AddNewCityEntry.Text))
+            {
+                NotificationEntry.Text = "City name can contains only letters!";
+                return;
+            }
+
             if (CheckExistingCity(AddNewCityEntry.Text))
             {
                 NotificationEntry.Text = "This city already exist";
