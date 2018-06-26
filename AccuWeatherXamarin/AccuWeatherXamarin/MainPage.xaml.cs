@@ -49,6 +49,12 @@ namespace AccuWeatherXamarin
 
         public async void AddNewCityButtonClicked(object sender, EventArgs e)
         {
+            if (AddNewCityEntry.Text == String.Empty)
+            {
+                NotificationEntry.Text = "Please enter city name!";
+                return;
+            }
+
             if (CheckExistingCity(AddNewCityEntry.Text))
             {
                 NotificationEntry.Text = "This city already exist";
