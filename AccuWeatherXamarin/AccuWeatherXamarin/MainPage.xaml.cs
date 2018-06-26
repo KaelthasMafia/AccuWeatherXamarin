@@ -29,7 +29,7 @@ namespace AccuWeatherXamarin
                 ChooseCityPicker.SelectedIndex = 0;
             }
 
-            api = new API("vcjA98ePKkjD4OW59ciFb1hQtpsNvwxo");
+            api = new API("YGqzuFwzd1I3biip10rCR0vDtWAZBQkH");
         }
 
         public async void SearchByCityButtonClicked(object sender, EventArgs e)
