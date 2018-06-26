@@ -30,7 +30,7 @@ namespace AccuWeatherXamarin
             }
             catch (ArgumentOutOfRangeException)
             {
-                throw new ArgumentOutOfRangeException("Invalid city name!");
+                throw new ArgumentOutOfRangeException("cityName", "Invalid city name!");
             }
             
         }
