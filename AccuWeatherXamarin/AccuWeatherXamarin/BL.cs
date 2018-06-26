@@ -9,7 +9,7 @@ namespace AccuWeatherXamarin
     {
         public static bool StringIsValid(string str)
         {
-            return !string.IsNullOrEmpty(str) && !Regex.IsMatch(str, @"(^[^a-zA-Z_]|[^a-zA-Z\d_])");
+            return !string.IsNullOrEmpty(str) && !Regex.IsMatch(str, @"(^[^a-zA-Z]|[^a-zA-Z\d])");
         }
     }
 }
