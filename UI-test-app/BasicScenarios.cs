@@ -66,13 +66,13 @@ namespace UITests
         {
             DeleteCityElement.Click();
             Thread.Sleep(3000);
-            Assert.AreEqual("Successfully deleted!", NotificationElement.Text);
+            Assert.AreEqual(NotificationElement.Text, "Successfully deleted!");
 
             AddNewCityTextElement.Clear();
             AddNewCityTextElement.SendKeys("Kharkiv");
             AddNewCityElement.Click();
             Thread.Sleep(3000);
-            Assert.AreEqual("Successfully saved!", NotificationElement.Text);
+            Assert.AreEqual(NotificationElement.Text, "Successfully saved!");
         }
 
         [TestMethod]
@@ -91,7 +91,7 @@ namespace UITests
             AddNewCityElement.Click();
             //ChooseCityElement.SendKeys("2");
             Thread.Sleep(3000);
-            Assert.AreEqual("This city already exist", NotificationElement.Text);
+            Assert.AreEqual(NotificationElement.Text, "This city already exist");
         }
 
         [TestMethod]
@@ -101,16 +101,7 @@ namespace UITests
             AddNewCityTextElement.SendKeys("BlaBlaBlaBla");
             AddNewCityElement.Click();
             Thread.Sleep(3000);
-            Assert.AreEqual("Invalid city name!", NotificationElement.Text);
-        }
-
-        [TestMethod]
-        public void AddCityWithEmptyString()
-        {
-            //AddNewCityTextElement.Clear();
-            AddNewCityElement.Click();
-            Thread.Sleep(3000);
-            Assert.AreEqual("Please enter city name!", NotificationElement.Text);
+            Assert.AreEqual(NotificationElement.Text, "Invalid city name!");
         }
 
         public void CheckWeatherFields()
