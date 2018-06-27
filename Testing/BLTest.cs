@@ -23,12 +23,20 @@ namespace Testing
         [TestCase("(")]
         [TestCase(")")]
         [TestCase("_")]
-        [TestCase("-")]
         [TestCase("+")]
         [TestCase("~")]
-        public void CheckForRegularException(string str)
+        public void CheckForIncorrectSymbolsInRegularExpression(string str)
         {
             Assert.AreEqual(false, BL.StringIsValid(str));
+        }
+
+        [Test]
+        [TestCase("qwertyuiopasd fghjklzxcvbnm-")]
+        [TestCase("Los-Angeles")]
+        [TestCase("Rio De Janeiro")]
+        public void CheckForCorrectSymbolsInRegularExpression(string str)
+        {
+            Assert.AreEqual(true, BL.StringIsValid(str));
         }
     }
 }
