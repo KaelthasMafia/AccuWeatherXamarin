@@ -10,7 +10,7 @@ namespace Testing
     public class BLTest
     {
         [Test]
-        [TestCase("1")]
+        [TestCase("Kael%thas")]
         [TestCase("2")]
         [TestCase("!")]
         [TestCase("@")]
