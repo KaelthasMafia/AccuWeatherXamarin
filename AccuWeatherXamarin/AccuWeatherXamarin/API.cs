@@ -18,7 +18,6 @@ namespace AccuWeatherXamarin
             dataService = new DataService();
         }
 
-         //"APBox2VjIW5hH9z4CjkeiaCM7NFu33K3";
         public async Task<string> GetCityKey(string cityName)
         {
             string query = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + key + "&q=" + cityName;
